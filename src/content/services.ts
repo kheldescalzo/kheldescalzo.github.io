@@ -15,26 +15,26 @@ export const servicesSection = {
   eyebrow: servicesPage.eyebrow,
   titleThin: 'Pick one',
   titleBold: 'or stack a few.',
-  explore: 'Explore',
+  explore: 'Discuss this service',
   /** The Work chapter each card opens, by service id (a chapter id from home.ts). */
-  work: { 'service-1': 'screens', 'service-2': 'featured', 'service-3': 'websites', 'service-4': 'websites', 'service-5': 'apps' } as Record<string, string>,
+  work: { 'service-1': 'featured', 'service-2': 'featured', 'service-3': 'apps', 'service-4': 'featured', 'service-5': 'side-projects' } as Record<string, string>,
 }
 
 export const services: Service[] = [
   {
     id: 'service-1',
     title: 'Customer Service',
-    summary: 'Inbox, chat, and guest replies that sound like you — calm, clear, and on time.',
+    summary: 'Customer support through phone, email, and live chat, including benefits advocacy, claims and billing questions, sales inquiries, and issue resolution.',
     outcome: 'Replies handled',
-    bullets: ['Triage and first response', 'Escalations with context', 'Hospitality tone of voice'],
+    bullets: ['Benefits coverage, eligibility, enrollment, and provider guidance', 'Claims inquiries, billing questions, refunds, complaints, and escalations', 'Sales follow-ups, appointment changes, and technical troubleshooting'],
     tools: [tools.toolA, tools.toolB, tools.toolC],
   },
   {
     id: 'service-2',
     title: 'Scheduling',
-    summary: 'Calendars, bookings, and reminders so the right people show up in the right slot.',
+    summary: 'Calendar and appointment management, including bookings, changes, meeting reminders, time-zone coordination, and travel arrangements.',
     outcome: 'Calendar clean',
-    bullets: ['Booking and reschedules', 'Conflict checks', 'Prep notes before the call'],
+    bullets: ['Appointment booking, rescheduling, cancellations, and conflict resolution', 'Meeting invitations, reminders, and time-zone coordination', 'Travel arrangements and accommodation bookings'],
     tools: [tools.toolD, tools.toolE, tools.toolF],
   },
   {
@@ -48,17 +48,17 @@ export const services: Service[] = [
   {
     id: 'service-4',
     title: 'Admin Tasks',
-    summary: 'The follow-through: files, trackers, SOPs, and the small jobs that stall a week.',
+    summary: 'Administrative support across employer work, freelance clients, and personal projects, from organized records and reports to onboarding and process documentation.',
     outcome: 'Admin current',
-    bullets: ['Docs and folders', 'Trackers and reports', 'SOP drafts you can reuse'],
+    bullets: ['Inbox follow-ups, data entry, CRM updates, trackers, and reports', 'Documents, files, meeting notes, action items, and SOPs', 'Client onboarding, invoices, payment tracking, and expense records'],
     tools: [tools.toolJ, tools.toolK, tools.toolL],
   },
   {
     id: 'service-5',
-    title: 'Problem Solving',
-    summary: 'When something odd lands, I find the next step, tell you what happened, and close it.',
-    outcome: 'Issues unstuck',
-    bullets: ['Root of the request', 'Options, then a decision', 'Written close-out'],
+    title: 'Automation',
+    summary: 'Workflow automation for lead capture, onboarding, reminders, reporting, and repetitive admin tasks.',
+    outcome: 'Workflows connected',
+    bullets: ['Forms, CRM updates, lead routing, and data syncing', 'Email follow-ups, appointment reminders, and onboarding tasks', 'Reports, documents, AI-assisted processing, and browser automation'],
     tools: [tools.toolA, tools.toolF, tools.toolK],
   },
 ]

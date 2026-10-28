@@ -3,6 +3,7 @@ import { aboutSection, capabilities, credentials, type AboutCredential } from '@
 import { certification, externalLinks, socials } from '@/content/site'
 import { personJsonLd } from '@/lib/seo'
 import './about.css'
+import { confirmedToolGroups } from '@/content/confirmed-tools'
 
 const pad2 = (n: number) => String(n).padStart(2, '0')
 
@@ -82,6 +83,13 @@ export function AboutSection() {
           </a>{' '}
           {s.note.rest}
         </p>
+        <section className="ab__toolbox" aria-label="Tools I have used">
+          <h3>Tools I’ve used</h3>
+          {confirmedToolGroups.map((group) => <details key={group.category}>
+            <summary>{group.category}</summary>
+            <p>{group.tools.join(' · ')}</p>
+          </details>)}
+        </section>
         <ul className="ab__caps">
           {capabilities.map((c, i) => (
             <li key={c.title} className="ab__cap">

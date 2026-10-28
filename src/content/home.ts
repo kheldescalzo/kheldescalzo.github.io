@@ -25,7 +25,7 @@ import {
 export const homeHero = {
   headlineThin: 'Your ops, covered.',
   headlineBold: 'I run the rest.',
-  subhead: 'Virtual assistant for customer service, scheduling, technical support, and admin — hospitality-trained problem solving for busy teams.',
+  subhead: 'Customer service, admin, scheduling, and automation support — backed by 17 years across benefits advocacy, sales, hospitality, customer service, and scheduling, along with two years in automation.',
   cta: { label: 'Get in touch', to: '/#contact' },
 }
 
@@ -58,7 +58,7 @@ export const homeSections = {
   },
   proof: {
     eyebrow: 'Proof',
-    title: 'What I run for clients today.',
+    title: 'Customer feedback.',
   },
   objections: {
     eyebrow: 'Before you write',
@@ -68,7 +68,7 @@ export const homeSections = {
 
 export const ctaBand = {
   title: 'Tell me what is eating your week.',
-  body: 'Write two or three lines. I reply within one business day with a plan for coverage, a few questions, or a straight no if I am not the right desk.',
+  body: 'Tell me what you need handled, the tools you use, and your preferred schedule. We can discuss the scope, availability, and next steps.',
   button: 'Email me your question',
 }
 
@@ -128,8 +128,8 @@ const experimentItems = groupItems(experiments)
 export const workSection = {
   ...homeSections.work,
   /** The title as one display line in the hero's thin + bold pairing. */
-  titleThin: 'Systems you can',
-  titleBold: 'open right now.',
+  titleThin: 'Projects and',
+  titleBold: 'practical tools.',
   all: { label: `See all ${workCount} builds`, to: '/work' },
 }
 
@@ -146,17 +146,17 @@ const screenItems: WorkItem[] = screens.map((s) => ({
  * the sitemap follow (the bento's grid areas in work.css are keyed by chapter id). A chapter with a
  * `lead` is a single build; one with no landscape picture shows its `marks` as a logo face instead.
  */
-export const workChapters: WorkChapter[] = [
+const draftWorkChapters: WorkChapter[] = [
   {
     id: 'featured',
-    title: 'Client ops desk',
-    line: 'Inbox, calendar, and follow-ups in one working system.',
+    title: featuredProject.title,
+    line: 'My personal portfolio, customized and deployed with AI assistance.',
     count: 1,
     unit: 'project',
-    description: 'The desk I use to keep customer replies, bookings, and admin in one place so nothing sits overnight.',
+    description: featuredProject.summary,
     marks: [tools.toolA, siteMark],
     items: [],
-    lead: cover('featured-project', featuredProject.title, 'cover'),
+    lead: featuredProject.image,
     gallery: featuredProject.gallery,
     link: featuredProject.link,
   },
@@ -215,19 +215,12 @@ export const workChapters: WorkChapter[] = [
   },
   {
     id: 'apps',
-    title: 'Apps and Extensions',
-    line: 'Phone and browser tools that shorten a desk day.',
+    title: 'PC & Phone Apps',
+    line: 'Personal assistant, calendar, timer, and Android prototypes.',
     count: apps.length,
     unit: 'apps',
-    description: 'Lightweight apps and extensions for replies, schedules, and ticket notes on the go.',
+    description: 'Personal Windows and Android projects developed with AI assistance. These are internal builds and prototypes, with device-testing limitations noted in each description.',
     // The tile shows the first app's store shot, cropped from the title bar down (public/images/apps/app-1-tile.webp).
-    tile: {
-      src: '/images/apps/app-1-tile.webp',
-      alt: 'App One store screen',
-      width: 540,
-      height: 928,
-      srcSet: '/images/apps/320/app-1-tile.webp 320w, /images/apps/app-1-tile.webp 540w',
-    },
     marks: [tools.toolL, tools.toolA, tools.toolB],
     items: apps.map((app) => ({ id: app.id, name: app.name, kicker: app.kind, summary: app.summary, image: app.image, status: app.status })),
   },
@@ -252,5 +245,7 @@ export const workChapters: WorkChapter[] = [
     items: experimentItems,
   },
 ]
+
+export const workChapters = draftWorkChapters.filter((chapter) => ['featured', 'apps', 'side-projects'].includes(chapter.id))
 
 export const findChapter = (id: string | undefined) => workChapters.find((chapter) => chapter.id === id)

@@ -111,15 +111,15 @@ export function personJsonLd({ description, skills, credential, sameAs, companyU
       address: { '@type': 'PostalAddress', addressCountry: site.countryCode },
       worksFor: { '@type': 'Organization', name: site.brand, url: companyUrl },
       knowsAbout: skills,
-      hasCredential: {
+      ...(credential.url && credential.url !== '#' ? { hasCredential: {
         '@type': 'EducationalOccupationalCredential',
         name: credential.name,
         credentialCategory: 'certification',
         identifier: credential.id,
         ...(certification.issuer ? { recognizedBy: { '@type': 'Organization', name: certification.issuer } } : {}),
         ...(credential.url ? { url: credential.url } : {}),
-      },
-      sameAs,
+      } } : {}),
+      sameAs: sameAs.filter((url) => /^https?:\/\//.test(url)),
     },
   ])
 }
@@ -193,7 +193,7 @@ export function proofJsonLd({ path, title, description, quotes, videos }: ProofL
           '@type': 'Quotation',
           text: q.text,
           creator: { '@type': 'Person', name: q.name },
-          dateCreated: isoDay(q.date),
+          ...(q.date ? { dateCreated: isoDay(q.date) } : {}),
           about: { '@id': `${site.url}/#person` },
         })),
         ...videos.map((v) =>

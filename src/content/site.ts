@@ -19,10 +19,10 @@ export const site = {
   },
   /** The live address, no trailing slash. Canonical URLs, the sitemap and the JSON-LD use it. */
   url: 'https://achilles25.github.io',
-  role: 'Virtual Assistant — Customer Service, Scheduling, Technical Support & Admin',
+  role: 'Virtual Assistant — Customer Service, Admin, Scheduling & Automation',
   email: 'michaeldescalzo@gmail.com',
   emailSubject: 'Virtual assistant inquiry',
-  replyPromise: 'Reply within one business day.',
+  replyPromise: 'Contact me to discuss your requirements and availability.',
   location: 'Remote, GMT+8',
   /** Two-letter country code (ISO 3166) for the Person JSON-LD address. */
   countryCode: 'PH',
@@ -46,7 +46,7 @@ export const certification: Credential = {
 /** Up to five fit the sidebar header. `icon` picks the glyph in components/brand/SocialIcon.tsx. */
 export const socials: SocialLink[] = [
   { label: 'LinkedIn', href: '#', external: true, icon: 'linkedin' },
-  { label: 'GitHub', href: '#', external: true, icon: 'github' },
+  { label: 'GitHub', href: 'https://github.com/Achilles25', external: true, icon: 'github' },
   { label: 'X', href: '#', external: true, icon: 'x' },
   { label: 'Facebook', href: '#', external: true, icon: 'facebook' },
   { label: 'Discord', href: '#', external: true, icon: 'discord' },
@@ -55,7 +55,7 @@ export const socials: SocialLink[] = [
 /** Off-site links the pages point at. Replace each `#` with a real URL. */
 export const externalLinks = {
   resource: '/demos/plans/sample-plan.html',
-  showcase: '/showcase',
+  showcase: '/work/featured',
   company: '/#about',
 } as const
 

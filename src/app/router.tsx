@@ -20,6 +20,7 @@ const PAGE_COMPONENTS: Partial<Record<string, ComponentType<{ page: PageRoute }>
 }
 
 function elementFor(page: PageRoute) {
+  if (page.id === 'showcase') return <Navigate to='/#work' replace />
   // A page that only lives as a Home section (Work, Services, About) sends its own URL there.
   if (page.draft && page.section) return <Navigate to={`/#${page.section}`} replace />
   const Page = PAGE_COMPONENTS[page.id] ?? RouteStage

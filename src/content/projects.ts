@@ -9,7 +9,7 @@ export const projects: WorkItem[] = [
     id: 'make-lead-intake',
     name: 'Lead intake & follow-up',
     kicker: 'Make · Sample automation',
-    summary: 'A workflow concept that validates a new enquiry, checks for an existing lead, and routes a follow-up for the right person. Explore the browser demo with sample data.',
+    summary: 'A sample lead-intake design: receive a website enquiry, validate the details, check for duplicates, log the lead in Google Sheets, and route the next action with a Gmail reply draft. Try the browser simulation with sample data.',
     stack: 'Make · Webhook · Google Sheets · Gmail',
     href: '/demos/automation/make-lead-intake.html',
   },

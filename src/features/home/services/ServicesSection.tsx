@@ -1,7 +1,6 @@
 import { useRef, type CSSProperties } from 'react'
 import { Link } from 'react-router'
 import { ArrowUpRight } from '@phosphor-icons/react'
-import { chapterPath } from '@/content/home'
 import { services, servicesSection } from '@/content/services'
 import { useScrollScene } from '@/hooks/use-scroll-scene'
 import { servicesScene } from './services-scene'
@@ -37,8 +36,7 @@ export function ServicesSection() {
         {services.map((service, i) => (
           <li key={service.id} className="sv__item" style={{ '--i': i } as CSSProperties}>
             <Link
-              to={chapterPath(servicesSection.work[service.id] ?? 'screens')}
-              state={{ sheet: true }}
+              to="/contact"
               preventScrollReset
               className="sv__card"
               data-card

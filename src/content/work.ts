@@ -1,5 +1,6 @@
 import type { AiGroup, AppBuild, Demo, Image, LinkRef } from './schema'
 import { projects } from './projects'
+import { personalApps } from './personal-apps'
 
 export const workPage = {
   eyebrow: 'Work',
@@ -9,25 +10,13 @@ export const workPage = {
 
 /* ---------- Featured project ---------- */
 
-const shot = (file: string, alt: string, width: number, height: number): Image => ({
-  src: `/images/work/${file}`,
-  alt,
-  width,
-  height,
-})
-
 export const featuredProject = {
   kicker: 'Featured project',
-  title: 'Client ops desk',
-  summary: 'A single working system for inbox, calendar, tickets, and follow-ups. Clients see fewer dropped messages; I see one queue instead of five tabs.',
-  link: { label: 'Open the live project', href: '#', external: true } satisfies LinkRef,
+  title: 'Khel VA Portfolio',
+  summary: 'My personal portfolio, customized from a React template with AI-assisted development and deployed as a static website on GitHub Pages. Includes editable content, responsive navigation, and interactive automation samples.',
+  link: { label: 'Open the portfolio', href: 'https://achilles25.github.io', external: true } satisfies LinkRef,
+  image: { src: '/images/projects/portfolio-home.jpg', alt: 'Khel VA portfolio homepage with profile sidebar', width: 1905, height: 854 } satisfies Image,
   gallery: [
-    shot('gallery-1.webp', 'Client ops desk, inbox view', 1600, 900),
-    shot('gallery-2.webp', 'Client ops desk, calendar view', 1600, 900),
-    shot('gallery-3.webp', 'Client ops desk, tickets view', 1600, 900),
-    shot('gallery-4.webp', 'Client ops desk, SOP view', 1600, 900),
-    shot('gallery-5.webp', 'Client ops desk, bookings view', 1600, 900),
-    shot('gallery-6.webp', 'Client ops desk, weekly report', 1600, 900),
   ],
 }
 
@@ -96,51 +85,7 @@ export const bookingPages: Demo[] = [
 
 /* ---------- Apps and extensions ---------- */
 
-export const apps: AppBuild[] = [
-  {
-    id: 'app-1',
-    name: 'Desk queue',
-    kind: 'Mobile app',
-    tagline: 'The open list, in your pocket.',
-    summary: 'A phone view of today’s tickets, bookings, and follow-ups. Built for a VA who cannot sit at the laptop for every ping.',
-    status: 'Beta',
-    image: { src: '/images/apps/app-1.webp', alt: 'Desk queue store screen', width: 540, height: 1200 },
-  },
-  {
-    id: 'app-2',
-    name: 'Shift notes',
-    kind: 'Mobile app',
-    tagline: 'Handoff in one screen.',
-    summary: 'Capture what happened on a shift — replies sent, slots moved, issues still open — so the next person is not starting from zero.',
-    status: 'Beta',
-    image: { src: '/images/apps/app-2.webp', alt: 'Shift notes screens', width: 480, height: 266 },
-  },
-  {
-    id: 'app-3',
-    name: 'Reply kit',
-    kind: 'Mobile app',
-    tagline: 'Tone-of-voice snippets on tap.',
-    summary: 'Saved customer-service lines, hospitality phrasing, and escalation templates. Free to keep the voice consistent away from the desk.',
-    status: 'Free',
-    image: { src: '/images/apps/app-3.webp', alt: 'Reply kit screens', width: 480, height: 266 },
-  },
-  {
-    id: 'extension-1',
-    name: 'Calendar peek',
-    kind: 'Browser extension',
-    tagline: 'Next three slots, one click.',
-    summary: 'Opens the next free windows and a copy-ready booking line so scheduling does not mean leaving the inbox.',
-    image: { src: '/images/apps/extension-1.webp', alt: 'Calendar peek popup', width: 419, height: 597 },
-  },
-  {
-    id: 'extension-2',
-    name: 'Ticket stamp',
-    kind: 'Browser extension',
-    tagline: 'Stamp the tab with the ticket ID.',
-    summary: 'One click copies the ticket number, customer name, and last note into the clipboard for Slack or the CRM.',
-    image: { src: '/images/apps/extension-2.webp', alt: 'Ticket stamp popup', width: 403, height: 306 },
-  },
-]
+export const apps: AppBuild[] = personalApps
 
 /* ---------- Side projects and experiments (no pictures: the sheet lists them) ---------- */
 
@@ -177,17 +122,6 @@ export const experiments: AiGroup[] = [
   },
 ]
 
-const buildsIn = (groups: AiGroup[]) => groups.reduce((n, g) => n + g.builds.length, 0)
 
 /** Number of builds across every Work chapter, shown as the sidebar badge. Derived, never typed in. */
-export const workCount =
-  1 +
-  caseStudies.length +
-  1 +
-  screens.length +
-  sampleSites.length +
-  funnelPages.length +
-  bookingPages.length +
-  apps.length +
-  projects.length +
-  buildsIn(experiments)
+export const workCount = 1 + apps.length + projects.length

@@ -1,7 +1,7 @@
 import type { Icon } from '@phosphor-icons/react'
-import { Briefcase, Compass, Cube, Envelope, FileText, House, SealCheck, ShieldCheck, Stack, User } from '@phosphor-icons/react'
+import { Briefcase, Cube, Envelope, FileText, House, SealCheck, ShieldCheck, Stack, User } from '@phosphor-icons/react'
 import { workCount } from '@/content/work'
-import { externalLinks, site } from '@/content/site'
+import { site } from '@/content/site'
 
 /**
  * The route registry: the one list that drives the router, the sidebar, the search palette
@@ -58,7 +58,7 @@ export const pages: PageRoute[] = [
     path: '/',
     label: 'Home',
     title: `${SUFFIX} | Virtual Assistant`,
-    description: 'Michael Descalzo is a virtual assistant for customer service, scheduling, technical support, and admin — hospitality-trained problem solving for busy teams.',
+    description: 'Michael Descalzo provides customer service, admin, scheduling, and automation support, with 17 years of combined experience and two years in automation.',
     icon: House,
     group: 'menu',
   },
@@ -69,7 +69,7 @@ export const pages: PageRoute[] = [
     path: '/work',
     label: 'Work',
     title: `Work | ${SUFFIX}`,
-    description: 'Ops desk, case studies, onboarding SOP, live screens, sample pages, and the small tools behind a working week.',
+    description: 'Personal portfolio, PC and Android applications, and clearly labeled automation samples.',
     icon: Briefcase,
     group: 'menu',
     badge: workCount,
@@ -94,7 +94,7 @@ export const pages: PageRoute[] = [
     path: '/about',
     label: 'About',
     title: `About ${SUFFIX}`,
-    description: 'Michael Descalzo: hospitality-trained virtual assistant, working remotely on GMT+8 with overlap across US, EU, and APAC.',
+    description: 'Michael Descalzo: 17 years across customer service, benefits advocacy, sales, hospitality, and scheduling, plus two years in automation.',
     icon: User,
     group: 'menu',
     section: 'about',
@@ -105,7 +105,7 @@ export const pages: PageRoute[] = [
     path: '/proof',
     label: 'Proof',
     title: `Proof | ${SUFFIX}`,
-    description: 'Sample client desks and feedback for customer service, scheduling, technical support, and admin coverage.',
+    description: 'Customer feedback from property-management work, with reviewer surnames blurred.',
     icon: SealCheck,
     group: 'discover',
     section: 'proof',
@@ -118,8 +118,7 @@ export const pages: PageRoute[] = [
     title: `Showcase | ${SUFFIX}`,
     description: 'The client ops desk: inbox, calendar, tickets, playbooks, and weekly close-out in one working system.',
     icon: Cube,
-    group: 'discover',
-    section: 'showcase',
+    draft: true,
   },
   {
     kind: 'page',
@@ -127,7 +126,7 @@ export const pages: PageRoute[] = [
     path: '/contact',
     label: 'Contact',
     title: `Contact | ${SUFFIX}`,
-    description: 'Write Michael Descalzo about coverage. Replies within one business day with a plan or a straight no.',
+    description: 'Contact Michael Descalzo about customer service, admin, scheduling, automation, and AI-assisted projects.',
     icon: Envelope,
     group: 'general',
     section: 'contact',
@@ -152,17 +151,7 @@ export const pages: PageRoute[] = [
   },
 ]
 
-export const externals: ExternalRoute[] = [
-  {
-    kind: 'external',
-    id: 'resource',
-    href: externalLinks.resource,
-    label: 'Resources',
-    description: 'Guides and notes on running a small-team desk: inbox, calendar, tickets, and admin.',
-    icon: Compass,
-    group: 'discover',
-  },
-]
+export const externals: ExternalRoute[] = []
 
 /** Sidebar entries per group, in registry order (pages first, then external links). */
 export function navEntries(group: NavGroupId): NavEntry[] {
@@ -175,3 +164,4 @@ export function navTarget(page: PageRoute): string {
 }
 
 export const notFoundTitle = `Page Not Found | ${SUFFIX}`
+

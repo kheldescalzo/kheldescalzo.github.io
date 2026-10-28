@@ -202,3 +202,5 @@
   font-family: var(--font-mono);
   font-size: 12px;
 }
+
+.pf-review-image { display: block; width: 100%; height: auto; margin-top: 20px; border-radius: 8px; }

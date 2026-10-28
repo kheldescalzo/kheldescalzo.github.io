@@ -10,7 +10,7 @@ export const faqs = {
   startSpeed: {
     question: 'How fast can you start?',
     answer:
-      'A defined weekly block can start within a few business days once access and tone-of-voice notes are in. Larger retainers take a short onboarding week. I work GMT+8 and overlap US evenings, European mornings, and Asia-Pacific business hours.',
+      'Start dates and working hours are agreed after we discuss the scope, workload, and your preferred schedule.',
   },
   needStack: {
     question: 'Do I need a specific platform?',
@@ -20,12 +20,12 @@ export const faqs = {
   pricing: {
     question: 'How much do you charge?',
     answer:
-      'Most work is a weekly retainer; a defined one-off (inbox catch-up, SOP pack, calendar clean) can be fixed-price. I quote after a short written brief: hours, tools, and what “done” looks like. The quote names what is included before anything starts.',
+      'Pricing depends on the scope, tools, and hours involved. Send a short brief so we can discuss an arrangement and agree what is included before work starts.',
   },
   afterWrite: {
     question: 'What happens after I write?',
     answer:
-      'I reply within one business day with a plan, a few clarifying questions, or a straight no if I am not the right desk. Nothing is billed until we agree the scope in writing.',
+      'We will discuss your requirements, tools, preferred schedule, and next steps. Any work and pricing are agreed before starting.',
   },
 } satisfies Record<string, Faq>
 

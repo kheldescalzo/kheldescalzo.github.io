@@ -81,11 +81,11 @@ export type AppBuild = {
   id: string
   name: string
   /** The label above the name. Widen the list for other kinds ("iOS app", "Web app"). */
-  kind: 'Mobile app' | 'Browser extension'
+  kind: 'Mobile app' | 'Browser extension' | 'Desktop app' | 'PC & Android app'
   tagline: string
   summary: string
   status?: BuildStatus
-  image: Image
+  image?: Image
 }
 
 export type AiBuild = {
@@ -166,8 +166,9 @@ export type VideoTestimonial = {
 export type Quote = {
   name: string
   context: string
-  date: string
+  date?: string
   text: string
+  image?: Image
 }
 
 export type ProductTab = {

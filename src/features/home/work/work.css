@@ -56,12 +56,8 @@
 .wb__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(4, clamp(150px, 14.5cqi, 210px));
-  grid-template-areas:
-    'web web web web web web app app app tic tic tic'
-    'web web web web web web app app app tic tic tic'
-    'aut aut aut aut fw  fw  app app app bp  bp  bp'
-    'aut aut aut aut ai  ai  bot bot bot bp  bp  bp';
+  grid-template-rows: repeat(2, clamp(190px, 18cqi, 260px));
+  grid-template-areas: 'tic tic tic tic tic tic app app app app app app' 'tic tic tic tic tic tic ai ai ai ai ai ai';
   gap: 12px;
   margin: 0;
   padding: 0;
@@ -176,14 +172,8 @@
 @container (max-width: 700px) {
   .wb__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 220px 180px 180px 200px 170px 160px;
-    grid-template-areas:
-      'web web'
-      'app tic'
-      'app bp'
-      'aut aut'
-      'fw  ai'
-      'bot bot';
+    grid-template-rows: 240px 220px 220px;
+    grid-template-areas: 'tic tic' 'app app' 'ai ai';
     gap: 10px;
   }
 }

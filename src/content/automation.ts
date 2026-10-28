@@ -35,14 +35,14 @@ const box = (col: number, row: number) => ({ x: 24 + col * 200, y: ROWS[row]!, w
 
 
 export const liveAutomation = {
-  eyebrow: 'Live automation',
+  eyebrow: 'Sample automation flow',
   titleThin: 'Intake. Support.',
   titleBold: 'Close.',
   steps: method.steps.map((step) => ({ name: step.name, body: step.body })),
   panel: { lead: 'Lead to', rest: 'Covered Desk' },
   legend: { auto: 'Automation', lead: 'Lead path' },
   zones: { booking: 'Calendar', pipeline: 'Desk' },
-  connected: 'System live',
+  connected: 'Workflow concept',
   hint: { hover: 'Hover a stage to inspect', tap: 'Tap a stage to inspect' },
   nodes: [
     { id: 'form', title: 'New Enquiry', tag: 'New lead trigger', plane: 'lead', icon: 'form', ...box(0, 0), step: 0, about: 'A founder writes from the site or forwards the inbox that is eating the week.' },

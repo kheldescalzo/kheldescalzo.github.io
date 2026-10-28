@@ -1,5 +1,5 @@
 import type { Image, ToolMark } from './schema'
-import { certification, externalLinks, site } from './site'
+import { site } from './site'
 import { tools } from './tools'
 
 /**
@@ -10,13 +10,13 @@ export const aboutSection = {
   eyebrow: 'About',
   titleThin: "Hi, I'm",
   titleBold: `${site.name}.`,
-  lede: 'I am a virtual assistant for founders and operators who need customer service, scheduling, technical support, and admin handled without dropping the guest experience.',
-  lead: 'My background is hospitality and customer service: calm replies, clean handoffs, and problem solving when the unexpected shows up.',
-  leadQuiet: 'Today I run the inbox, the calendar, the tickets, and the admin so you can stay with the work only you can do.',
+  lede: 'I provide customer service, administrative support, scheduling, and automation to help businesses keep their daily work moving.',
+  lead: 'I bring 17 years of experience across benefits advocacy, sales, hospitality, customer service, and scheduling, along with two years of experience in automation.',
+  leadQuiet: 'I combine customer support with organized administration and practical automation to help teams manage everyday tasks.',
   note: {
     company: `${site.brand} is my practice`,
-    product: { label: 'Client ops desk', href: externalLinks.showcase },
-    rest: 'is the working system I use to keep support, bookings, and follow-ups in one place.',
+    product: { label: 'my personal projects', href: '/#work' },
+    rest: 'show how I apply AI-assisted development to websites, desktop tools, and Android apps.',
   },
   picture: {
     src: '/images/profile/desk.webp',
@@ -44,22 +44,4 @@ export type AboutCredential = {
   href?: string
 }
 
-export const credentials: AboutCredential[] = [
-  { id: 'cert', title: certification.title, detail: certification.detail, image: { ...certification.image!, alt: '' } },
-  { id: 'place', title: `Based ${site.timePlace}`, detail: 'GMT+8 · overlap with US, EU, and APAC mornings' },
-  {
-    id: 'community',
-    title: 'Hospitality-trained',
-    detail: 'Guest-first service',
-    href: '#',
-    image: { src: '/images/badges/64/community.webp', alt: '', width: 64, height: 64 },
-  },
-  {
-    id: 'partner',
-    title: 'Problem solving',
-    detail: 'Tickets to resolution',
-    href: '#',
-    image: { src: '/images/badges/64/partner-light.webp', alt: '', width: 64, height: 64 },
-    imageDark: { src: '/images/badges/64/partner.webp', alt: '', width: 64, height: 64 },
-  },
-]
+export const credentials: AboutCredential[] = []
