@@ -46,7 +46,7 @@ export const certification: Credential = {
 /** Replace `#` with the real profile URL to activate an icon. */
 export const socials: SocialLink[] = [
   { label: 'GitHub', href: 'https://github.com/kheldescalzo', external: true, icon: 'github' },
-  { label: 'Facebook', href: '#', external: true, icon: 'facebook' },
+  { label: 'Facebook', href: 'https://www.facebook.com/kheldescalzo/', external: true, icon: 'facebook' },
   { label: 'YouTube', href: '#', external: true, icon: 'youtube' },
 ]
 
