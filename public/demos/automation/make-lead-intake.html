@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lead intake with Make | Khel VA</title>
+<meta name="description" content="An interactive sample automation design. Browser simulation with sample data."><link rel="stylesheet" href="./demo.css"><script src="./demo.js" defer></script></head>
+<body data-kind="make"><main>
+<a href="/work/side-projects">← Back to automation projects</a>
+<header><div class="eyebrow">Khel VA / Automation concept / Make</div>
+<h1>An enquiry becomes<br>a clear next step.</h1>
+<p>A sample lead intake workflow for a small service business: collect enquiries, check the record, and route the next action so it has a clear owner.</p>
+<p class="notice"><strong>Sample project · Interactive browser simulation.</strong> This demonstrates a proposed Make scenario. It is not an exported or connected automation, and no client results are claimed. Use sample data; nothing is sent or saved.</p></header>
+<ol class="flow"><li><b>01</b>Webhook</li><li><b>02</b>Validate & search</li><li><b>03</b>Google Sheets</li><li><b>04</b>Router</li><li><b>05</b>Gmail draft</li></ol>
+<div class="layout"><section><form><h2>Try the workflow</h2>
+<label for="name">Lead name</label><input id="name" name="name" value="Taylor Sample" required maxlength="100">
+<label for="email">Sample email</label><input id="email" name="email" type="email" value="taylor@example.com" required maxlength="150">
+<label for="priority">Request priority</label><select id="priority" name="priority"><option>Standard</option><option>Urgent</option></select>
+<button type="submit">Run sample</button><button type="button" id="reset" class="secondary">Reset demo</button></form></section>
+<section class="panel" aria-live="polite" aria-atomic="true"><h2>Run log & output</h2><p id="state" class="state">Ready to simulate</p><div id="results">Use the sample record, or change the fields. Run twice to see duplicate handling.</div></section></div>
+<section class="implementation"><h2>How this would be built</h2>
+<ol><li>Start with a custom webhook accepting name, email, priority, and a unique submission ID.</li><li>Validate the required fields. Search Google Sheets for an existing submission ID or normalized email.</li><li>Add a lead row only when the lookup has no match. Use sequential processing or a durable idempotency key to avoid simultaneous duplicates.</li><li>Use router filters for urgent and standard requests. Send urgent requests to owner review.</li><li>Create a Gmail draft for review. Log failures and retry without repeating completed actions.</li></ol>
+<p><strong>What to verify before activation:</strong> connected accounts, field mappings, available plan features, trigger behavior, duplicate handling, failure retries, and approval of the welcome message. Benefits described here are intended outcomes, not measured client results.</p>
+<p>Platform references: <a href="https://www.make.com/integrations/gateway/google-sheets">Make webhook and Google Sheets integration</a> · <a href="https://help.make.com/step-2-add-a-router">Make routers</a>.</p></section>
+<footer>Designed as a portfolio sample for Michael Descalzo · Khel VA</footer></main></body></html>

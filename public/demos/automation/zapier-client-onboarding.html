@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Client onboarding with Zapier | Khel VA</title>
+<meta name="description" content="An interactive sample automation design. Browser simulation with sample data."><link rel="stylesheet" href="./demo.css"><script src="./demo.js" defer></script></head>
+<body data-kind="zapier"><main>
+<a href="/work/side-projects">← Back to automation projects</a>
+<header><div class="eyebrow">Khel VA / Automation concept / Zapier</div>
+<h1>A new client becomes<br>a ready-to-run checklist.</h1>
+<p>A sample onboarding workflow for a virtual assistant: check that the client is ready, prepare a welcome message, and create a consistent kickoff checklist.</p>
+<p class="notice"><strong>Sample project · Interactive browser simulation.</strong> This demonstrates a proposed Zapier workflow. It is not an exported or connected automation, and no client results are claimed. Use sample data; nothing is sent or saved.</p></header>
+<ol class="flow"><li><b>01</b>New sheet row</li><li><b>02</b>Ready filter</li><li><b>03</b>Gmail draft</li><li><b>04</b>Trello checklist</li></ol>
+<div class="layout"><section><form><h2>Try the workflow</h2>
+<label for="name">Client name</label><input id="name" name="name" value="Taylor Sample" required maxlength="100">
+<label for="email">Sample email</label><input id="email" name="email" type="email" value="taylor@example.com" required maxlength="150">
+<label for="status">Onboarding status</label><select id="status" name="status"><option>Ready</option><option>Waiting for approval</option></select>
+<button type="submit">Run sample</button><button type="button" id="reset" class="secondary">Reset demo</button></form></section>
+<section class="panel" aria-live="polite" aria-atomic="true"><h2>Run log & output</h2><p id="state" class="state">Ready to simulate</p><div id="results">Use the sample record, or change the fields. Run twice to see duplicate handling.</div></section></div>
+<section class="implementation"><h2>How this would be built</h2>
+<ol><li>Use a dedicated Google Sheets worksheet with client name, email, status, and a unique client ID.</li><li>Trigger on a new row and filter for status Ready. If status changes after row creation, use an updated-row trigger instead.</li><li>Look up a durable processed-client record before continuing. The browser demo uses memory only; production needs persistent duplicate protection.</li><li>Create a welcome draft in Gmail and a Trello onboarding card with scope, access, hours, and kickoff checklist.</li><li>Record the client ID and completed actions. Route errors to manual review so a retry does not duplicate the draft or card.</li></ol>
+<p><strong>What to verify before activation:</strong> connected accounts, field mappings, available plan features, trigger behavior, duplicate handling, failure retries, and approval of the welcome message. Benefits described here are intended outcomes, not measured client results.</p>
+<p>Platform references: <a href="https://help.zapier.com/hc/en-us/articles/8495994922509-How-to-get-started-with-Google-Sheets-on-Zapier">Zapier Google Sheets documentation</a>.</p></section>
+<footer>Designed as a portfolio sample for Michael Descalzo · Khel VA</footer></main></body></html>
