@@ -1,7 +1,7 @@
 # Your GitHub Pages portfolio
 
-Website: https://achilles25.github.io/
-Repository: https://github.com/Achilles25/Achilles25.github.io
+Website: https://kheldescalzo.github.io/
+Repository: https://github.com/kheldescalzo/kheldescalzo.github.io
 
 The website is static. GitHub builds and publishes it when you commit changes to main.
 The repository and site are public. Netlify is no longer required for this address.
@@ -20,7 +20,7 @@ Other content files are listed in EDITING-GUIDE.md. Keep the template's LICENSE 
 Use this folder and Preview Portfolio.bat as before. Build with npm run build.
 For publishing local edits, commit and push them to the GitHub repository, or upload the changed files into their matching folders using GitHub's Add file menu. Do not upload node_modules, dist, secrets, or environment files.
 
-Each page route gets its own index.html during the build, so direct links and refreshes work on static GitHub Pages. Demo HTML pages remain standalone. Links and images use the root address Achilles25.github.io; renaming the repository into a project subfolder requires additional path configuration.
+Each page route gets its own index.html during the build, so direct links and refreshes work on static GitHub Pages. Demo HTML pages remain standalone. Links and images use the root address kheldescalzo.github.io; renaming the repository into a project subfolder requires additional path configuration.
 
 ## Migration notes
 

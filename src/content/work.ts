@@ -14,7 +14,7 @@ export const featuredProject = {
   kicker: 'Featured project',
   title: 'Khel VA Portfolio',
   summary: 'My personal portfolio, customized from a React template with AI-assisted development and deployed as a static website on GitHub Pages. Includes editable content, responsive navigation, and interactive automation samples.',
-  link: { label: 'Open the portfolio', href: 'https://achilles25.github.io', external: true } satisfies LinkRef,
+  link: { label: 'Open the portfolio', href: 'https://kheldescalzo.github.io', external: true } satisfies LinkRef,
   image: { src: '/images/projects/portfolio-home.jpg', alt: 'Khel VA portfolio homepage with profile sidebar', width: 1905, height: 854 } satisfies Image,
   gallery: [
   ],

@@ -18,7 +18,7 @@ export const site = {
     headerDark: '/images/brand/mark-light-96.webp',
   },
   /** The live address, no trailing slash. Canonical URLs, the sitemap and the JSON-LD use it. */
-  url: 'https://achilles25.github.io',
+  url: 'https://kheldescalzo.github.io',
   role: 'Virtual Assistant — Customer Service, Admin, Scheduling & Automation',
   email: 'michaeldescalzo@gmail.com',
   emailSubject: 'Virtual assistant inquiry',
@@ -45,7 +45,7 @@ export const certification: Credential = {
 
 /** Replace `#` with the real profile URL to activate an icon. */
 export const socials: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/Achilles25', external: true, icon: 'github' },
+  { label: 'GitHub', href: 'https://github.com/kheldescalzo', external: true, icon: 'github' },
   { label: 'Facebook', href: '#', external: true, icon: 'facebook' },
   { label: 'YouTube', href: '#', external: true, icon: 'youtube' },
 ]
