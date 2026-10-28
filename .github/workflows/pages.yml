@@ -13,7 +13,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  import-source:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import approved portfolio content
+        shell: bash
+        run: |
+          if [ -f portfolio-source.zip ]; then
+            unzip -o portfolio-source.zip
+            rm portfolio-source.zip
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add .
+            git commit -m "Add service tool icons, close controls, and app screenshots"
+            git push
+          fi
   build:
+    needs: import-source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
