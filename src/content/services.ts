@@ -15,7 +15,7 @@ export const servicesSection = {
   eyebrow: servicesPage.eyebrow,
   titleThin: 'Pick one',
   titleBold: 'or stack a few.',
-  explore: 'Discuss this service',
+  explore: 'Explore this service',
   /** The Work chapter each card opens, by service id (a chapter id from home.ts). */
   work: { 'service-1': 'featured', 'service-2': 'featured', 'service-3': 'apps', 'service-4': 'featured', 'service-5': 'side-projects' } as Record<string, string>,
 }
@@ -27,7 +27,7 @@ export const services: Service[] = [
     summary: 'Customer support through phone, email, and live chat, including benefits advocacy, claims and billing questions, sales inquiries, and issue resolution.',
     outcome: 'Replies handled',
     bullets: ['Benefits coverage, eligibility, enrollment, and provider guidance', 'Claims inquiries, billing questions, refunds, complaints, and escalations', 'Sales follow-ups, appointment changes, and technical troubleshooting'],
-    tools: [tools.toolA, tools.toolB, tools.toolC],
+    tools: [tools.salesforce, tools.hubspot, tools.toolB, tools.toolA, tools.outlook, tools.teams],
   },
   {
     id: 'service-2',
@@ -35,7 +35,7 @@ export const services: Service[] = [
     summary: 'Calendar and appointment management, including bookings, changes, meeting reminders, time-zone coordination, and travel arrangements.',
     outcome: 'Calendar clean',
     bullets: ['Appointment booking, rescheduling, cancellations, and conflict resolution', 'Meeting invitations, reminders, and time-zone coordination', 'Travel arrangements and accommodation bookings'],
-    tools: [tools.toolD, tools.toolE, tools.toolF],
+    tools: [tools.toolD, tools.toolE, tools.outlook, tools.toolF, tools.teams, tools.toolJ],
   },
   {
     id: 'service-3',
@@ -43,7 +43,7 @@ export const services: Service[] = [
     summary: 'Help people get unstuck: logins, tools, how-tos, and tickets closed with a record.',
     outcome: 'Tickets closed',
     bullets: ['How-to and access help', 'Ticket notes that stick', 'Handoff when it is a bug'],
-    tools: [tools.toolG, tools.toolH, tools.toolI],
+    tools: [tools.toolB, tools.salesforce, tools.toolC, tools.teams, tools.toolF, tools.toolH],
   },
   {
     id: 'service-4',
@@ -51,7 +51,7 @@ export const services: Service[] = [
     summary: 'Administrative support across employer work, freelance clients, and personal projects, from organized records and reports to onboarding and process documentation.',
     outcome: 'Admin current',
     bullets: ['Inbox follow-ups, data entry, CRM updates, trackers, and reports', 'Documents, files, meeting notes, action items, and SOPs', 'Client onboarding, invoices, payment tracking, and expense records'],
-    tools: [tools.toolJ, tools.toolK, tools.toolL],
+    tools: [tools.salesforce, tools.hubspot, tools.toolB, tools.excel, tools.toolK, tools.toolJ, tools.toolG, tools.docusign],
   },
   {
     id: 'service-5',
@@ -59,6 +59,6 @@ export const services: Service[] = [
     summary: 'Workflow automation for lead capture, onboarding, reminders, reporting, and repetitive admin tasks.',
     outcome: 'Workflows connected',
     bullets: ['Forms, CRM updates, lead routing, and data syncing', 'Email follow-ups, appointment reminders, and onboarding tasks', 'Reports, documents, AI-assisted processing, and browser automation'],
-    tools: [tools.toolA, tools.toolF, tools.toolK],
+    tools: [tools.make, tools.zapier, tools.n8n, tools.forms, tools.airtable, tools.toolK],
   },
 ]

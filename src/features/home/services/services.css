@@ -220,3 +220,34 @@
     display: none;
   }
 }
+
+/* A useful tool shelf fills the open side of each card. */
+.sv__card { width: 100%; text-align: left; font: inherit; border: 0; cursor: pointer; }
+.sv__tools { position: absolute; right: 4%; top: 24%; bottom: 12%; width: 45%; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); align-content: center; gap: 18px 12px; }
+.sv__tool { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 9px; font-size: 12px; line-height: 1.35; color: var(--ink-2); }
+.sv__logo { display: grid; place-items: center; width: 58px; height: 58px; border-radius: 16px; background: #fff; box-shadow: 0 4px 18px #0002; }
+.sv__logo img { width: 32px; height: 32px; object-fit: contain; }
+.sv__desc { max-width: 46%; }
+.sv__name { max-width: 49%; }
+.service-detail { width: min(840px,calc(100% - 28px)); max-height: 88svh; padding: 0; border: 1px solid var(--line-strong); border-radius: 24px; background: var(--surface); color: var(--ink); box-shadow: 0 24px 120px #0008; }
+.service-detail::backdrop { background: #000b; backdrop-filter: blur(10px); }
+.service-detail__panel { padding: clamp(22px,5vw,48px); }
+.service-detail header { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.service-detail__close { display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid var(--line-strong); background: var(--bg); color: var(--ink); border-radius: 50%; cursor: pointer; }
+.service-detail h2 { font-size: clamp(30px,5vw,56px); font-weight: 300; margin: 28px 0 20px; }
+.service-detail p, .service-detail li { color: var(--ink-2); line-height: 1.7; }
+.service-detail ul { padding-left: 20px; margin-block: 20px 32px; }
+.service-detail__tools { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 24px 12px; margin: 24px 0 36px; }
+@container (max-width: 750px) {
+  .sv__tools { position: static; width: 100%; grid-template-columns: repeat(4,minmax(0,1fr)); order: 3; margin-top: 24px; gap: 16px 8px; }
+  .sv__name, .sv__desc { max-width: 100%; }
+  .sv__explore { order: 4; }
+  .sv__logo { width: 44px; height: 44px; border-radius: 12px; }
+  .sv__logo img { width: 26px; height: 26px; }
+  .sv__tool { font-size: 10px; }
+}
+@media (max-width: 460px) { .service-detail__tools { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+
+.service-detail { margin: auto; }
+.service-detail header { position: sticky; top: 0; background: var(--surface); z-index: 1; }
+@container (max-width: 750px) { .sv__card { height: auto; min-height: 0; } }

@@ -1,5 +1,6 @@
-import { useRef, type CSSProperties } from 'react'
-import { Link } from 'react-router'
+import { useRef, useState, type CSSProperties } from 'react'
+import { ServiceDetails } from './ServiceDetails'
+import type { Service } from '@/content/schema'
 import { ArrowUpRight } from '@phosphor-icons/react'
 import { services, servicesSection } from '@/content/services'
 import { useScrollScene } from '@/hooks/use-scroll-scene'
@@ -13,9 +14,10 @@ const pad = (n: number) => String(n).padStart(2, '0')
  * cards are dealt onto a pile: each card slides up and settles a few pixels below the one before,
  * which sinks back (scale) and dims under it, so a thin edge of every earlier card stays in view.
  * Phones: the same pile on native CSS sticky, without the sink. Reduced motion: a plain stack.
- * Every card opens the Work chapter that shows that service.
+ * Every card opens its service details, with a close control returning to the card.
  */
 export function ServicesSection() {
+  const [selected, setSelected] = useState<Service | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
   useScrollScene(sectionRef, servicesScene)
 
@@ -35,9 +37,9 @@ export function ServicesSection() {
       <ol className="sv__stack">
         {services.map((service, i) => (
           <li key={service.id} className="sv__item" style={{ '--i': i } as CSSProperties}>
-            <Link
-              to="/contact"
-              preventScrollReset
+            <button
+              type="button"
+              onClick={() => setSelected(service)}
               className="sv__card"
               data-card
             >
@@ -46,11 +48,13 @@ export function ServicesSection() {
                   {pad(i + 1)}
                   <span>{service.outcome}</span>
                 </span>
-                <span className="sv__tags">
-                  {service.tools.map((tool) => (
-                    <span key={tool.name}>{tool.name}</span>
-                  ))}
-                </span>
+
+              </span>
+              <span className="sv__tools" aria-label="Tools used">
+                {service.tools.map(tool => <span className="sv__tool" key={tool.name}>
+                  <span className="sv__logo"><img src={tool.logo} alt="" width="32" height="32" loading="lazy" /></span>
+                  <span>{tool.name}</span>
+                </span>)}
               </span>
               <span className="sv__name">{service.title}</span>
               <span className="sv__desc">
@@ -61,12 +65,13 @@ export function ServicesSection() {
                 <ArrowUpRight size={14} weight="bold" aria-hidden />
               </span>
               <span className="sv__dim" aria-hidden />
-            </Link>
+            </button>
           </li>
         ))}
         {/* Room for the finished pile to hold (services.css .sv__tail): sticky range ends at the list's content box. */}
         <li className="sv__tail" aria-hidden />
       </ol>
+      <ServiceDetails service={selected} onClose={() => setSelected(null)} />
     </section>
   )
 }

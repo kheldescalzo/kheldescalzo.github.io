@@ -111,3 +111,13 @@ It is a static single-page app: `npm run build` and serve `dist/` with every unk
 [PolyForm Noncommercial 1.0.0](LICENSE), plus one extra permission: you can use it for **your own** portfolio, even if that portfolio promotes your paid services.
 
 What it does not allow without a commercial license: selling or reselling this template, or building portfolio sites for other people for payment. For a commercial license, email brewedops@gmail.com.
+
+
+### Editing service tools and app pictures
+- `src/content/services.ts`: choose each service's tool list and edit its text.
+- `src/content/tools.ts`: tool names and local SVG filenames. Brand marks live in `public/images/tools/`; credits are beside them.
+- `src/content/personal-apps.ts`: app name, description, icon, screenshot, dimensions, and screenshot caption. Images live in `public/images/projects/`.
+- Use actual screenshots without private records, passwords, pairing codes, or contact lists. Label interface previews and earlier builds accurately.
+- FamilyPing currently uses its original launcher icon; a screenshot can be added to its entry when available.
+- Service cards open a details dialog. The upper-right X and Escape return to the same position on Home. Work galleries also have an X; standalone pages have a return-home X.
+- Run `npm run lint` and `npm run build`, then commit the edited files to `main` on GitHub. GitHub Pages publishes automatically.

@@ -219,10 +219,10 @@ const draftWorkChapters: WorkChapter[] = [
     line: 'Personal assistant, calendar, timer, and Android prototypes.',
     count: apps.length,
     unit: 'apps',
-    description: 'Personal Windows and Android projects developed with AI assistance. These are internal builds and prototypes, with device-testing limitations noted in each description.',
+    description: 'Personal Windows and Android projects developed with AI assistance. These applications are working prototypes under active development. Reliability testing is ongoing, with visual design and interface polish planned for a later stage. Individual testing limitations are noted below.',
     // The tile shows the first app's store shot, cropped from the title bar down (public/images/apps/app-1-tile.webp).
     marks: [tools.toolL, tools.toolA, tools.toolB],
-    items: apps.map((app) => ({ id: app.id, name: app.name, kicker: app.kind, summary: app.summary, image: app.image, status: app.status })),
+    items: apps.map((app) => ({ id: app.id, name: app.name, kicker: app.kind, summary: app.summary, image: app.image, icon: app.icon, screenshotNote: app.screenshotNote, status: app.status })),
   },
   {
     id: 'side-projects',

@@ -78,6 +78,8 @@ export type Demo = {
 }
 
 export type AppBuild = {
+  icon?: string
+  screenshotNote?: string
   id: string
   name: string
   /** The label above the name. Widen the list for other kinds ("iOS app", "Web app"). */
@@ -129,6 +131,8 @@ export type WorkChapter = {
 
 /** One build inside a Work chapter. `href` opens it live in a new tab. */
 export type WorkItem = {
+  icon?: string
+  screenshotNote?: string
   id: string
   name: string
   /** The small label above the name: funnel step, kind of app, or agent group. */

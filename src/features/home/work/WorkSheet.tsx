@@ -149,7 +149,7 @@ function Grid({ items, lead }: { items: WorkItem[]; lead: boolean }) {
       {items.map((item, i) => (
         <li key={item.id} className={lead && i === 0 ? 'sh__item sh__item--lead' : 'sh__item'} data-reveal>
           <ItemLink item={item}>
-            <span className={item.href && item.href !== '#' ? 'sh__shot' : 'sh__shot sh__shot--contain'}>
+            {item.image && <span className={item.href && item.href !== '#' ? 'sh__shot' : 'sh__shot sh__shot--contain'}>
               {item.image ? (
                 <img
                   src={item.image.src}
@@ -160,8 +160,9 @@ function Grid({ items, lead }: { items: WorkItem[]; lead: boolean }) {
                   decoding="async"
                 />
               ) : null}
-            </span>
+            </span>}
             <span className="sh__cap">
+              {item.icon && <img className="sh__app-icon" src={item.icon} alt={`${item.name} icon`} width="52" height="52" />}
               <span className="wk-count">
                 {item.kicker}
                 {item.status ? <span className="sh__status">{item.status}</span> : null}
@@ -171,6 +172,8 @@ function Grid({ items, lead }: { items: WorkItem[]; lead: boolean }) {
                 {item.href && item.href !== '#' ? <ArrowUpRight size={16} weight="bold" aria-hidden /> : null}
               </h3>
               <span className="sh__sum">{item.summary}</span>
+              {item.screenshotNote && <span className="sh__screenshot-note">{item.screenshotNote}</span>}
+              {item.icon && item.image && !item.href && <a className="sh__screenshot-link" href={item.image.src} target="_blank" rel="noopener noreferrer">View full screenshot <ArrowUpRight size={14} aria-hidden /></a>}
             </span>
           </ItemLink>
         </li>

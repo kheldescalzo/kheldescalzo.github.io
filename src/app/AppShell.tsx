@@ -1,5 +1,6 @@
+import { X } from '@phosphor-icons/react'
 import { useEffect } from 'react'
-import { Outlet, ScrollRestoration } from 'react-router'
+import { Link, Outlet, ScrollRestoration, useLocation } from 'react-router'
 import { Sidebar } from '@/components/sidebar/Sidebar'
 import { MobileNav } from '@/components/drawer/MobileNav'
 import { SearchPalette } from '@/components/search/SearchPalette'
@@ -31,6 +32,7 @@ function useShortcuts(isDesktop: boolean) {
 }
 
 function Shell() {
+  const location = useLocation()
   const isDesktop = useMediaQuery(DESKTOP_QUERY)
   const { collapsed } = useShell()
   useShortcuts(isDesktop)
@@ -46,6 +48,7 @@ function Shell() {
       {isDesktop ? <Sidebar /> : <MobileNav />}
       <main id="main" className="app-main" tabIndex={-1}>
         <div className="app-main__inner">
+          {!['/', '/showcase', '/work', '/services', '/about'].includes(location.pathname.replace(/\/$/, '') || '/') && !location.pathname.startsWith('/work/') && <Link to="/" className="page-close" aria-label="Close page and return home"><X size={22} /></Link>}
           <Outlet />
           <SiteFooter />
         </div>

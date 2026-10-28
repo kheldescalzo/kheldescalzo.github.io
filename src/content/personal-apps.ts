@@ -7,6 +7,10 @@ import type { AppBuild } from './schema'
 export const personalApps: AppBuild[] = [
   {
     id: 'jarvis-pc',
+    icon: '/images/projects/jarvis-icon.png',
+    image: { src: '/images/projects/jarvis-pc-preview.png', alt: 'Desktop interface preview; demonstration text, voice and AI connections disabled.', width: 822, height: 532 },
+    screenshotNote: 'Desktop interface preview; demonstration text, voice and AI connections disabled.',
+
     name: 'Jarvis — PC Assistant',
     kind: 'Desktop app',
     tagline: 'A personal assistant for everyday desktop tasks.',
@@ -15,6 +19,10 @@ export const personalApps: AppBuild[] = [
   },
   {
     id: 'jarvis-phone',
+    icon: '/images/projects/jarvis-icon.png',
+    image: { src: '/images/projects/jarvis-phone.jpg', alt: 'Earlier Android companion build, captured from the phone screen.', width: 421, height: 967 },
+    screenshotNote: 'Earlier Android companion build, captured from the phone screen.',
+
     name: 'Jarvis — Android Companion',
     kind: 'Mobile app',
     tagline: 'Personal-assistant features on Android.',
@@ -23,6 +31,10 @@ export const personalApps: AppBuild[] = [
   },
   {
     id: 'jarvis-calendar',
+    icon: '/images/projects/calendar-icon.png',
+    image: { src: '/images/projects/calendar-android.jpg', alt: 'Jarvis Calendar on Android; empty calendar shown.', width: 1220, height: 2712 },
+    screenshotNote: 'Jarvis Calendar on Android; empty calendar shown.',
+
     name: 'Jarvis Calendar',
     kind: 'PC & Android app',
     tagline: 'Appointments and reminders across PC and phone.',
@@ -31,6 +43,10 @@ export const personalApps: AppBuild[] = [
   },
   {
     id: 'kantons-clock',
+    icon: '/images/projects/kantons-icon.png',
+    image: { src: '/images/projects/kantons-clock.png', alt: 'Screenshot of the original browser interface preview; Android packaging is a separate build.', width: 1280, height: 720 },
+    screenshotNote: 'Screenshot of the original browser interface preview; Android packaging is a separate build.',
+
     name: 'Kanton’s Clock',
     kind: 'Mobile app',
     tagline: 'A clock and Pomodoro timer with personal alarm choices.',
@@ -39,6 +55,8 @@ export const personalApps: AppBuild[] = [
   },
   {
     id: 'familyping',
+    icon: '/images/projects/familyping-icon.svg',
+
     name: 'FamilyPing',
     kind: 'Mobile app',
     tagline: 'An owner-enabled trusted-caller location prototype.',
