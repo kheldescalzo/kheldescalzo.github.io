@@ -42,6 +42,20 @@
 .social-key[data-icon='x'] {
   --brand: var(--brand-x);
 }
+.social-key[data-icon='youtube'] {
+  --brand: var(--brand-youtube);
+}
+.social-key--inactive {
+  cursor: default;
+  opacity: 0.62;
+}
+.social-key--inactive:is(:hover, :focus-visible) {
+  color: var(--ink-2);
+}
+.social-key--inactive:is(:hover, :focus-visible)::before {
+  opacity: 0;
+  transform: scale(0.86);
+}
 /* The soft key under the pointer. */
 .social-key::before {
   content: '';

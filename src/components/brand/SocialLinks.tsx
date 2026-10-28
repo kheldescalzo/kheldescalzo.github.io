@@ -6,13 +6,23 @@ import './social-links.css'
 export function SocialLinks({ className }: { className?: string }) {
   return (
     <ul className={`social-keys ${className ?? ''}`} aria-label="Find me on">
-      {socials.filter((social) => social.href.trim() !== '#' && social.href.trim() !== '').map((social) => (
-        <li key={social.icon}>
-          <a className="social-key" data-icon={social.icon} href={social.href} target="_blank" rel="noreferrer" aria-label={`${social.label} (opens in a new tab)`} title={social.label}>
-            <SocialIcon icon={social.icon} />
-          </a>
-        </li>
-      ))}
+      {socials.map((social) => {
+        const active = social.href.trim() !== '#' && social.href.trim() !== ''
+
+        return (
+          <li key={social.icon}>
+            {active ? (
+              <a className="social-key" data-icon={social.icon} href={social.href} target="_blank" rel="noreferrer" aria-label={`${social.label} (opens in a new tab)`} title={social.label}>
+                <SocialIcon icon={social.icon} />
+              </a>
+            ) : (
+              <span className="social-key social-key--inactive" data-icon={social.icon} aria-label={`${social.label} link coming soon`} title={`${social.label} link coming soon`}>
+                <SocialIcon icon={social.icon} />
+              </span>
+            )}
+          </li>
+        )
+      })}
     </ul>
   )
 }

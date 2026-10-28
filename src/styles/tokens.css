@@ -30,6 +30,7 @@
   --brand-discord: #5865f2;
   --brand-github: var(--ink); /* one-colour marks follow the ink, so they never vanish on dark */
   --brand-x: var(--ink);
+  --brand-youtube: #ff0033;
   --knob: #ffffff;
   --band: var(--accent-soft); /* sidebar banner behind the picture */
 

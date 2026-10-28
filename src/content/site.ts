@@ -43,13 +43,11 @@ export const certification: Credential = {
   image: { src: '/images/badges/badge.webp', alt: 'Hospitality and customer service background', width: 96, height: 96 },
 }
 
-/** Up to five fit the sidebar header. `icon` picks the glyph in components/brand/SocialIcon.tsx. */
+/** Replace `#` with the real profile URL to activate an icon. */
 export const socials: SocialLink[] = [
-  { label: 'LinkedIn', href: '#', external: true, icon: 'linkedin' },
   { label: 'GitHub', href: 'https://github.com/Achilles25', external: true, icon: 'github' },
-  { label: 'X', href: '#', external: true, icon: 'x' },
   { label: 'Facebook', href: '#', external: true, icon: 'facebook' },
-  { label: 'Discord', href: '#', external: true, icon: 'discord' },
+  { label: 'YouTube', href: '#', external: true, icon: 'youtube' },
 ]
 
 /** Off-site links the pages point at. Replace each `#` with a real URL. */
