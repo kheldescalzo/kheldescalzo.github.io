@@ -45,8 +45,9 @@ export const homeManifesto = {
     { key: 'calendar' },
     'honest, close the',
     { key: 'tickets,' },
-    'and finish the',
-    { key: 'admin' },
+    'finish the',
+    { key: 'admin,' },
+    'and handle automation and vibe coding,',
     'so you can stay with the guests and the work only you can do.',
   ] satisfies ManifestoPart[],
 }
