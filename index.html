@@ -41,6 +41,256 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Portfolio AI Chat Widget Start -->
+<style>
+  #khel-chat-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #111827;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  #khel-chat-btn:hover {
+    transform: scale(1.06);
+    background: #2563eb;
+  }
+
+  #khel-chat-box {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    width: 350px;
+    max-width: calc(100vw - 48px);
+    height: 480px;
+    max-height: calc(100vh - 120px);
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    z-index: 9999;
+    border: 1px solid #e5e7eb;
+  }
+
+  #khel-chat-header {
+    background: #111827;
+    color: #ffffff;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  #khel-chat-close {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  #khel-chat-close:hover {
+    color: #ffffff;
+  }
+
+  #khel-chat-messages {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #f9fafb;
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .khel-msg {
+    padding: 10px 14px;
+    border-radius: 14px;
+    max-width: 82%;
+    word-wrap: break-word;
+  }
+  .khel-bot {
+    background: #ffffff;
+    color: #1f2937;
+    align-self: flex-start;
+    border: 1px solid #e5e7eb;
+    border-bottom-left-radius: 4px;
+  }
+  .khel-user {
+    background: #2563eb;
+    color: #ffffff;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+
+  #khel-quick-prompts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px;
+    background: #ffffff;
+    border-top: 1px solid #f3f4f6;
+  }
+  .khel-chip {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .khel-chip:hover {
+    background: #dbeafe;
+  }
+
+  #khel-chat-form {
+    display: flex;
+    padding: 10px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    gap: 8px;
+  }
+  #khel-chat-input {
+    flex: 1;
+    border: 1px solid #d1d5db;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 14px;
+    outline: none;
+  }
+  #khel-chat-input:focus {
+    border-color: #2563eb;
+  }
+  #khel-chat-send {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  #khel-chat-send:disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
+  }
+</style>
+
+<button id="khel-chat-btn" aria-label="Open Chat">💬</button>
+
+<div id="khel-chat-box">
+  <div id="khel-chat-header">
+    <span>Portfolio Assistant</span>
+    <button id="khel-chat-close" aria-label="Close Chat">&times;</button>
+  </div>
+
+  <div id="khel-chat-messages">
+    <div class="khel-msg khel-bot">Hi there! Ask me anything about my skills, projects, or how we can work together.</div>
+  </div>
+
+  <div id="khel-quick-prompts">
+    <button type="button" class="khel-chip">What are your skills?</button>
+    <button type="button" class="khel-chip">Tell me about your projects</button>
+    <button type="button" class="khel-chip">How can I contact you?</button>
+  </div>
+
+  <form id="khel-chat-form">
+    <input type="text" id="khel-chat-input" placeholder="Type a message..." autocomplete="off" required />
+    <button type="submit" id="khel-chat-send">Send</button>
+  </form>
+</div>
+
+<script>
+  (function () {
+    const API_URL = "https://vercel.app";
+    const chatBtn = document.getElementById("khel-chat-btn");
+    const chatBox = document.getElementById("khel-chat-box");
+    const closeBtn = document.getElementById("khel-chat-close");
+    const form = document.getElementById("khel-chat-form");
+    const input = document.getElementById("khel-chat-input");
+    const sendBtn = document.getElementById("khel-chat-send");
+    const messages = document.getElementById("khel-chat-messages");
+    const chips = document.querySelectorAll(".khel-chip");
+
+    chatBtn.addEventListener("click", () => {
+      chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+      if (chatBox.style.display === "flex") input.focus();
+    });
+
+    closeBtn.addEventListener("click", () => {
+      chatBox.style.display = "none";
+    });
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = "khel-msg " + (sender === "user" ? "khel-user" : "khel-bot");
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+      return div;
+    }
+
+    async function sendMessage(text) {
+      if (!text.trim()) return;
+      addMessage(text, "user");
+      input.value = "";
+      input.disabled = true;
+      sendBtn.disabled = true;
+
+      const loadingMsg = addMessage("Thinking...", "bot");
+
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text }),
+        });
+
+        const data = await res.json();
+        loadingMsg.textContent = data.reply || "Sorry, I couldn't process that right now.";
+      } catch (err) {
+        loadingMsg.textContent = "Network error. Please try again later.";
+      } finally {
+        input.disabled = false;
+        sendBtn.disabled = false;
+        input.focus();
+      }
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      sendMessage(input.value);
+    });
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        sendMessage(chip.textContent);
+      });
+    });
+  })();
+</script>
+<!-- Portfolio AI Chat Widget End -->
+
   </body>
 </html>
 
