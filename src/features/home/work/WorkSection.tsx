@@ -1,7 +1,8 @@
 import { Link } from 'react-router'
-import { chapterPath, workChapters, workSection } from '@/content/home'
+import { chapterPath, workChapters } from '@/content/home'
 import { chapterPicture } from './chapter-picture'
 import { ChapterFace } from './ChapterFace'
+import { ProductivityApps } from './ProductivityApps'
 import './work.css'
 
 /** Tiles are lazy, so Chrome reads their real width (`auto`); the fallback is the largest tile's share
@@ -17,11 +18,13 @@ export function WorkSection() {
   return (
     <section id="work" className="wk wb" aria-labelledby="work-title">
       <header className="wb__head">
-        <p className="wk-eyebrow">{workSection.eyebrow}</p>
+        <p className="wk-eyebrow">Selected work</p>
         <h2 id="work-title" className="wk-title">
-          <span className="wk-title__thin">{workSection.titleThin}</span> <span className="wk-title__bold">{workSection.titleBold}</span>
+          <span className="wk-title__thin">My own</span> <span className="wk-title__bold">productivity tools I created</span>
         </h2>
       </header>
+      <ProductivityApps />
+      <h3 className="wb__more">More projects</h3>
       <ul className="wb__grid">
         {workChapters.map((chapter) => {
           const pic = chapterPicture(chapter)

@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App interface preview</title><link rel="stylesheet" href="simple-ledger-android.css"><style>html,body{margin:0;min-height:100%;overflow:auto}body{display:grid;align-items:center;background:radial-gradient(ellipse at 80% 0%,#233e31,#111916 85%);padding:clamp(10px,4vw,26px);box-sizing:border-box}.product,.calendar-window,#demo{margin:0!important;width:100%!important;min-width:0!important;max-width:none!important}figcaption{display:none!important}body>div{min-width:0;zoom:.85}</style><body><div inert><figure id="demo">
+<div class="preview">
+<div class="preview-bar"><span class="lights" aria-hidden="true">● ● ●</span><strong>Simple Ledger</strong><span>DEMO</span></div>
+<div class="device">
+<div class="device-screen">
+<div class="device-heading"><h2 id="demo-title">Your ledger</h2><label id="month-control" hidden>Month <select id="demo-month"></select></label></div>
+<p id="demo-subtitle"></p><div id="demo-summary">
+<div class="balance"><div class="balance-label"><small id="balance-caption">TOTAL BALANCE</small><button type="button" id="balance-eye" aria-label="Hide total balance">◉</button></div><strong id="demo-net">₱18,450.00</strong></div>
+<div class="metrics"><div><small>Income</small><strong id="demo-income">₱25,000.00</strong></div><div><small>Expenses</small><strong id="demo-expense">₱6,550.00</strong></div></div>
+</div>
+<div id="demo-quick"><h3>Quick add</h3><div class="quick-add"><button type="button" data-add="income">＋ Add income</button><button type="button" data-add="expense">− Add expense</button></div></div><div id="demo-chart" hidden><h3>At a glance</h3><select id="chart-mode" aria-label="Graph view"><option>Monthly trends</option><option>Expense categories</option><option>Income categories</option><option>Total expenses</option><option>Total income</option></select><div id="chart-content"></div></div><div id="demo-profile" hidden><h3>Settings</h3><p>Theme · Dark</p><p>Accent color · Green</p><p>Currency · PHP</p></div><div id="demo-transactions"><div class="device-heading"><h3 id="entries-heading">Recent activity</h3><button type="button" class="demo-link" id="demo-add">+ Add entry</button></div>
+<div id="demo-entries" aria-labelledby="entries-heading"><p>Groceries · ₱1,250.00</p><p>Freelance payment · ₱25,000.00</p></div>
+</div><p class="demo-status" id="demo-status" role="status"></p>
+<button type="button" class="demo-link" id="demo-reset">Reset demo</button>
+<noscript>Enable JavaScript to try the demo.</noscript>
+</div><nav class="device-nav" aria-label="Demo views">
+<button type="button" data-view="home" aria-pressed="true"><span aria-hidden="true">⌂</span>Home</button>
+<button type="button" data-view="income" aria-pressed="false"><span aria-hidden="true">＋</span>Income</button>
+<button type="button" data-view="expense" aria-pressed="false"><span aria-hidden="true">−</span>Expenses</button>
+<button type="button" data-view="monthly" aria-pressed="false"><span aria-hidden="true">▣</span>Month</button>
+<button type="button" data-view="graph" aria-pressed="false"><span aria-hidden="true">⌁</span>Graph</button><button type="button" data-view="profile" aria-pressed="false"><span aria-hidden="true">○</span>Profile</button></nav><div class="device-credit">Ⓚ Kanton King 2026</div></div></div><figcaption>INTERACTIVE DEMO <span>Sample data · Changes last until you reload</span></figcaption>
+<dialog id="demo-dialog" aria-labelledby="form-title">
+<form id="demo-form">
+<h2 id="form-title">Add entry</h2>
+<label>Type <select name="type"><option value="expense">Expense</option><option value="income">Income</option></select></label>
+<label>Description <input name="description" maxlength="48" required></label>
+<label>Amount (PHP) <input name="amount" type="number" min="0.01" max="99999999" step="0.01" inputmode="decimal" required></label>
+<label>Category <select name="category"><option>Food</option><option>Transport</option><option>Home</option><option>Shopping</option><option>Health</option><option>Salary</option><option>Other</option><option>Debt</option></select></label>
+<label>Date <input name="date" type="date" min="2000-01-01" max="2099-12-31" required></label>
+<div class="actions"><button class="button" type="submit">Save entry</button><button class="button secondary" type="button" id="demo-cancel">Cancel</button><button class="demo-link" type="button" id="demo-delete" hidden>Delete entry</button></div>
+</form>
+</dialog>
+</figure></div></body></html>
