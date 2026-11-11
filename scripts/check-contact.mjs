@@ -25,10 +25,14 @@ for (const run of [
   const context = await browser.newContext({ viewport: run.viewport, isMobile: run.isMobile, hasTouch: run.hasTouch })
   await context.addInitScript((t) => {
     localStorage.setItem('pv2-theme', t)
-    // The mail-app hand-off: record the URL instead of leaving the page.
-    window.open = (url) => ((window.__mailto = String(url)), null)
   }, run.theme)
   const page = await context.newPage()
+  let submission
+  let replyStatus = 422
+  await page.route('https://formspree.io/f/**', async (route) => {
+    submission = route.request().postDataJSON()
+    await route.fulfill({ status: replyStatus, json: {} })
+  })
   const errors = []
   page.on('pageerror', (e) => errors.push(e.message))
   await page.goto(`${BASE}/contact`, { waitUntil: 'domcontentloaded' })
@@ -58,29 +62,26 @@ for (const run of [
   check(socials.length === 5 && socials.at(-1) === 'Discord', `${tag}: socials under the answers (${socials})`)
   check((await page.$eval('.ct-mail', (a) => a.getAttribute('href'))).startsWith('mailto:you@example.com'), `${tag}: direct address is the site email`)
 
-  await page.click('.ct-send')
-  await page.waitForTimeout(100)
-  check((await page.$('.ct-err[role="alert"]')) !== null, `${tag}: empty send names what is missing`)
-  const afterError = await page.evaluate(() => ({ focus: document.activeElement?.getAttribute('name'), invalid: [...document.querySelectorAll('.ct-form [aria-invalid="true"]')].length }))
-  check(afterError.focus === 'firstName' && afterError.invalid === 4, `${tag}: the first empty field takes focus, all four are marked (${JSON.stringify(afterError)})`)
+  check(await page.locator('.ct-send').isDisabled(), ` ${tag}: empty form disables Send`)
   const fontSize = await page.$eval('.ct-field input', (i) => parseFloat(getComputedStyle(i).fontSize))
   check(fontSize >= 16, `${tag}: inputs are 16px+ so iOS does not zoom on focus (${fontSize})`)
   if (tag === 'desk-dark') await shot(page, `${tag}-error`)
 
   await page.fill('input[name="firstName"]', 'Dana')
-  await page.fill('input[name="lastName"]', 'Reyes')
-  await page.fill('input[name="email"]', 'dana@example.com')
+  await page.fill('input[name="lastName"]', 'R')
+  await page.fill('input[name="email"]', 'dana@example')
   await page.fill('textarea[name="message"]', 'A short note about the project.')
+  check(await page.locator('.ct-send').isDisabled(), `${tag}: malformed email disables Send`)
+  await page.fill('input[name="email"]', 'dana@example.com')
   await page.click('.ct-send')
-  await page.waitForTimeout(300)
-  const mailto = await page.evaluate(() => window.__mailto)
-  check(mailto?.startsWith('mailto:you@example.com?subject=Project%20inquiry&body=Dana%20Reyes'), `${tag}: send opens the mail app, addressed and laid out`)
-  check((await page.$('.ct-done h3')) !== null && (await page.evaluate(() => document.activeElement?.tagName)) === 'H3', `${tag}: sent state shows and takes focus`)
-  check((await page.$eval('.ct-done__fallback a', (a) => a.getAttribute('href'))) === 'mailto:you@example.com', `${tag}: sent state also gives the address (no mail app opened)`)
-  await page.click('.ct-done__actions .pg-btn:last-child')
-  await page.waitForTimeout(150)
-  check((await page.$('.ct-form')) !== null && (await page.evaluate(() => document.activeElement?.getAttribute('name'))) === 'firstName', `${tag}: Write another brings the form back, focus on the first field`)
-
+  await page.waitForSelector('.ct-actions [role="alert"]')
+  check(await page.locator('textarea').inputValue() === 'A short note about the project.', `${tag}: failed submission keeps the message`)
+  replyStatus = 200
+  await page.click('.ct-send')
+  await page.waitForSelector('.ct-done h3')
+  check(submission?.lastName === 'R' && submission?.email === 'dana@example.com', `${tag}: submits an initial and reply address`)
+  await page.click('.ct-done__actions button')
+  check(await page.locator('textarea').inputValue() === '', `${tag}: Write another opens an empty form`)
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)
   check(!overflow, `${tag}: no sideways scroll`)
   check(errors.length === 0, `${tag}: no page errors ${errors.join(' | ')}`)
